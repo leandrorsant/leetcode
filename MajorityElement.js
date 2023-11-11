@@ -28,5 +28,25 @@ Constraints:
  * @return {number}
  */
 var majorityElement = function(nums) {
-    
+    let max_count = 1
+    let majority = 0;
+    for(let x =0;x<nums.length && max_count < nums.length/2;x++){
+        let count = nums[0]
+        for(let y=0;y<nums.length;y++){
+            if(nums[x] === nums[y]){
+                count++
+            }
+        }
+        if(count > max_count){
+            max_count = count;
+            majority = nums[x]
+        }
+    }
+    return majority;
 };
+
+let nums = [3,2,3]
+let majority = majorityElement(nums);
+
+console.log(JSON.stringify(nums))
+console.log(majority)
