@@ -30,9 +30,22 @@ Constraints:
 */
 
 /**
- * @param {number[]} prices
- * @return {number}
+ * param {number[]} prices
+ * return {number} 
  */
 var maxProfit = function(prices) {
-    
+    let profit = 0;
+    for(let x=0;x<prices.length;x++){
+        for(let y=x+1;y<prices.length;y++){
+            let current = prices[y] - prices[x];
+            if( current > profit){
+                profit = current;
+            }
+        }
+    }
+    return profit;
 };
+
+
+var prices = [7,1,5,3,6,4]; //5
+console.log(maxProfit(prices));
