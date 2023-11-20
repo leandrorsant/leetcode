@@ -34,18 +34,20 @@ Constraints:
  * return {number} 
  */
 var maxProfit = function(prices) {
-    let profit = 0;
-    for(let x=0;x<prices.length;x++){
-        for(let y=x+1;y<prices.length;y++){
-            let current = prices[y] - prices[x];
-            if( current > profit){
-                profit = current;
-            }
+    var max = 0;
+     var min = Number.MAX_VALUE;
+
+     for(var i = 0 ; i < prices.length ; i++) {
+        if(prices[i] < min) {
+            min = prices[i];
+        }else {
+            max = Math.max(max, prices[i] - min);
         }
-    }
-    return profit;
+     }
+
+     return max; 
 };
 
 
-var prices = [7,1,5,3,6,4]; //5
+var prices = [7,1,5,3,6,4];
 console.log(maxProfit(prices));
