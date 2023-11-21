@@ -42,5 +42,32 @@ Constraints:
  * return {number}
  */
 var maxProfitII = function(prices) {
+    let max = 0;
+    let min = Number.MAX_VALUE;
+
     
+    for(let x=0;x<prices.length;x++){
+        let profit = 0;
+        for(let buy=x;buy<prices.length; buy++){
+            //console.log("buy: "+buy);
+            let sell = buy+1;
+            for(sell;sell<prices.length;sell++){
+                if(prices[sell] > prices[buy]){
+                    profit += (prices[sell] - prices[buy]);
+                    //console.log("   profit:("+prices[sell]+"-"+prices[buy]+") "+profit);
+                    break;
+                }
+                //console.log("sell: "+sell);
+            }
+            buy = sell;
+        
+            if(profit> max)
+                max = profit;
+        }
+    }
+
+     return max; 
 };
+
+let prices = [1,2,3,4,5];
+console.log(maxProfitII(prices))
